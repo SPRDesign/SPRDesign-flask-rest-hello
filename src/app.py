@@ -187,11 +187,13 @@ def delete_planet(planet_id):
     
 @app.route('/users/favorites', methods=['GET'])
 def get_user_favorites(user_id):
-    user_id = () # Vacío pq no sabemos el id de usuario
+    user_id = () # Vacío pq no sabemos el id de usuario?
     user_favorites = Favorites.query.filter_by(user_id = user_id).all()
     serialized_favorites = [favorite.serialize() for favorite in user_favorites]
     return jsonify(serialized_favorites), 200
 
+#crear ruta para user:id metodo get
+#crear ruta para obtener favoritos de users/<int:user_id>/favorites method get
 
 # Characters Favorites EndPoints
 @app.route('/favorite/characters/<int:character_id>', methods=['POST'])
@@ -249,6 +251,7 @@ def delete_planet_favorite(planet_id):
         return jsonify({"error": "Planet not found in favorites"}), 404
 
 
+# Vehicles Favorites EndPoints
 
 
 # this only runs if `$ python src/app.py` is executed
