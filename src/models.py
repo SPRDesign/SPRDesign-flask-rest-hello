@@ -29,7 +29,7 @@ class Character(db.Model):
     eye_color = db.Column(db.Enum('blue', 'brown', 'green', 'black', 'other', name='eyes'), nullable=False)
     hair_color = db.Column(db.Enum('blond', 'brown', 'ginger', 'black', 'other', name = 'hair'), nullable=False)  
     planet_id = db.Column(db.Integer, db.ForeignKey('planet.id'))
-    planet = db.relationship(Planet)
+    #planet = db.relationship(Planet)
 
     def __repr__(self):
         return '<Character %r>' % self.name
@@ -54,8 +54,8 @@ class Planet(db.Model):
     terrain = db.Column(db.Enum('jungle, rainforests', 'grasslands, mountains', 'ocean', 'desert', 'tundra', 'ice caves, mountain ranges', 'forests, mountains, lakes', 'swamp, jungles', 'other', name = 'terrain'))
     surface_water = db.Column(db.Integer)
     population = db.Column(db.Integer)
-    orbital_period = db.Column(db.Integer, nullable=False)
-    rotation_period = db.Column(db.Integer, nullable=False)
+    orbital_period = db.Column(db.Integer)
+    rotation_period = db.Column(db.Integer)
     gravity = db.Column(db.String(50))
    
     def __repr__(self):
@@ -65,8 +65,8 @@ class Planet(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'diameter': self.diameter.
-            'climate': self.climate.
+            'diameter': self.diameter,
+            'climate': self.climate,
             'terrain': self.terrain,
             'surface_water' : self.surface_water,
             'population': self.population,
